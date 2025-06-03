@@ -13,11 +13,11 @@ The thermostat on auto won't stop heating after reaching the target temp!
   Mode: off
   Heating: OFF
   Cooling: OFF
-Mode changed to auto
+Mode changed to auto // Problem is here
 Target temperature set to 75°F
 Thermostat Status:
   Current Temp: 77°F
-  Target Temp: 75°F
+  Target Temp: 75°F //Regardless of target temp heating will not stop
   Mode: auto
   Heating: ON
   Cooling: OFF
