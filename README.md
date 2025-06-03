@@ -1,27 +1,25 @@
 # cs257-iot-device
 
 ## Description
-[1-2 sentences explaining what's wrong]
+The thermostat won't stop heating after reaching the target temp!
 
 ## Steps to Reproduce
 1. Compile with `g++ -o device main.cpp`
 2. Run `./device`
-3. [Exact steps that trigger the bug]
-4. [What to observe]
+3. Observe the results in the terminal (Second entry)
 
 ## Expected Behavior
-[What should happen]
+Upon exceeding target temp by 2 degrees the thermostat should redirect its effort to cooling the room back down and disabling heating.
 
 ## Actual Behavior
-[What actually happens]
+Upon exceeding the target temp by 2 the thermostat doesn't stop heating the room and begin trying to cool the room. Resulting in temprature continuing to rise
 
 ## Environment
-- OS: [e.g., Ubuntu 22.04, macOS 14.0]
-- Compiler: [e.g., g++ 11.4.0]
+- OS: Ubuntu 22.04
+- Compiler: g++ 11.4.0
 
 ## Possible Solution
-[Optional: Your ideas for fixing it]
+Some issue in if else branches relating to target temp?
 
 ## Test Case
-```cpp
-// Minimal code that demonstrates the issue
+
