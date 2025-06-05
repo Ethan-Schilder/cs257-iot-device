@@ -7,7 +7,7 @@ private:
     float targetTemp;
     bool isHeating;
     bool isCooling;
-    std::string mode; // "heat", "cool", "auto", "off"
+    std::string mode;
 
 public:
     SmartThermostat() : currentTemp(72.0), targetTemp(72.0), 
@@ -26,26 +26,18 @@ public:
     }
     
     void updateSystem() {
+        isHeating = false; // Reset states
+        isCooling = false;
         if (mode == "heat" && currentTemp < targetTemp) {
             isHeating = true;
-            isCooling = false;
         } else if (mode == "cool" && currentTemp > targetTemp) {
-            isHeating = false;
             isCooling = true;
         } else if (mode == "auto") {
-            // Auto mode: heat when too cold, cool when too hot
-            if (currentTemp < targetTemp - 2) {
+            if (currentTemp <= targetTemp - 2) { // Heat if 2°F or more below
                 isHeating = true;
-                isCooling = false;
-            } else if (currentTemp > targetTemp + 2) {
-                isHeating = false;
+            } else if (currentTemp >= targetTemp + 2) { // Cool if 2°F or more above
                 isCooling = true;
-            } else {
-
             }
-        } else {
-            isHeating = false;
-            isCooling = false;
         }
     }
     
@@ -66,17 +58,13 @@ public:
 
 int main() {
     SmartThermostat myThermostat;
-    
     myThermostat.displayStatus();
-    myThermostat.setMode("auto");
-    myThermostat.setTargetTemp(75.0);
-    
-    // Simulate some time passing
+    myThermostat.setMode("auto"); // User input here
+    myThermostat.setTargetTemp(80.0); // User input here
     for (int i = 0; i < 10; i++) {
         myThermostat.simulateTemperatureChange();
+        myThermostat.updateSystem(); // Update after temp change
     }
-    
     myThermostat.displayStatus();
-    
     return 0;
 }
